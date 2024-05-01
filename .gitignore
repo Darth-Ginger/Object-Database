@@ -7,6 +7,7 @@ UnityGenerated/
 UnityGeneratedAssembly/
 UnityWeb/
 ProjectSettings/
+ignore.conf
 
 # Visual Studio-specific
 .vs/
