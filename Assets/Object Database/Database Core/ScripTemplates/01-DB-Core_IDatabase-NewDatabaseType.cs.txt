@@ -1,0 +1,86 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+namespace Database.Core {
+
+    
+    public class #SCRIPTNAME# : ScriptableObject, IDatabase
+    {
+        /// <summary>
+        /// #SCRIPTNAME# is a database of #DBEntity#s
+        /// </summary>
+        
+        // Folders to search for database files
+        [SerializeField]
+        string[] searchFolders = new string[1] { "Assets/Database Core/Data/#SCRIPTNAME#" };
+        public void SetSearchFolders(string[] newfolders) => searchFolders = newfolders;
+        string[] GetSearchFolders() => searchFolders;
+        
+        // Database slots
+        [SerializeField]
+        #SCRIPTNAME#Slot[] slots = new #SCRIPTNAME#Slot[0];
+        public void SetSlots(#SCRIPTNAME#Slot[] newSlots) => slots = newSlots;
+        public #SCRIPTNAME#Slot[] GetSlots() => slots;
+        
+        // Database GetWindowRowSize
+        readonly int rowsize = 6;
+        public int GetWindowRowSize() => rowsize;
+        
+
+        public string[] GetAllNames() {
+            string[] names = new string[slots.Length];
+            for (int i = 0; i < slots.Length; i++) {
+                names[i] = slots[i].DescriptiveName;
+            }
+        }
+
+        ISaveJsonConfig[] GetJsons() {
+            #NOTRIM#
+        }
+
+        public Object GetDatabaseObjectBySlotIndex(int slotIndex) {
+            if (slotIndex < 0 || slotIndex > slots.Length -1 ) return null;
+            return slots[slotIndex].#DBEntity#;
+        }
+        
+        // Getting the Object, rowsize, or type
+        int GetWindowRowSize() => rowsize;
+        public DatabaseID GetDatabaseType() => DatabaseID.#SCRIPTNAME#;
+        public Object GetMyObject() => this;
+
+    }
+
+    [System.Serializable]
+    public class #SCRIPTNAME#Slot
+    {
+        public string DescriptiveName;
+        public #DBEntity#ID ID;
+        public #DBEntity# #DBEntity#;
+
+        public #DBEntity#Slot (#DBEntity#ID id, #DBEntity# newEntity) {
+            ID = id;
+            #DBEntity# = newEntity;
+            string #DBEntity#Name = #DBEntity#.GetName();
+
+            if (string.IsNullOrEmpty(#DBEntity#Name)) {
+                #DBEntity#Name = #DBEntity#.name;
+                id.Name = #DBEntity#Name
+            }
+            DescriptiveName = #DBEntity#Name;
+            #DBEntity#.SetID(id);
+        }
+
+    }
+
+    [System.Serializable]
+    public struct #DBEntity#ID
+    {
+        public string Name;
+        public int ID;
+    }
+
+
+
+}

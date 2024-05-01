@@ -1,0 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+namespace Database.Core {
+
+    [CreateAssetMenu(fileName = "new#SCRIPTNAME#", menuName = "DatabaseConfig/#SCRIPTNAME#")]
+    public class #SCRIPTNAME# : ScriptableObject, IDatabase
+    {
+        /// <summary>
+        /// #SCRIPTNAME# is a #SCRIPTNAME# in a Database
+        /// This is the bare minimum required for a Database
+        /// </summary>
+
+        //@todo: Add Entity Specific Properties        
+    }   
+
+}
