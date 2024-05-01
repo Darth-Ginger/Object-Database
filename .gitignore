@@ -7,7 +7,7 @@ UnityGenerated/
 UnityGeneratedAssembly/
 UnityWeb/
 ProjectSettings/
-ignore.conf
+*ignore.conf
 
 # Visual Studio-specific
 .vs/
@@ -33,6 +33,7 @@ build/
 # Editor-specific
 AssetStore/
 ProjectSettings/
+*.gitignore
 
 # IDE-specific
 .vscode/
