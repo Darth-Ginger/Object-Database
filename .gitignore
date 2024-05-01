@@ -7,6 +7,8 @@ UnityGenerated/
 UnityGeneratedAssembly/
 UnityWeb/
 ProjectSettings/
+*.plastic
+plastic.*
 *ignore.conf
 
 # Visual Studio-specific
